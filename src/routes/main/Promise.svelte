@@ -24,22 +24,22 @@
             cum_sum_mo: []
         }
         
-		let csvData = await csv('src/routes/main/data/nominal_counties.csv')
+		let csvData = await csv('https://raw.githubusercontent.com/cdemon12/app/master/src/routes/main/data/nominal_counties.csv')
 		csvData.forEach(d => {
   			data.nominal_counties.set(d.geoid, filterKeys(d, keysToKeep));
         });
         
-        csvData = await csv('src/routes/main/data/per_capita_counties.csv')
+        csvData = await csv('https://raw.githubusercontent.com/cdemon12/app/master/src/routes/main/data/per_capita_counties.csv')
         csvData.forEach(d => {
             data.per_capita_counties.set(d.geoid, filterKeys(d, keysToKeep));
         });
 
-        csvData = await csv('src/routes/main/data/cum_sum_counties.csv')
+        csvData = await csv('https://raw.githubusercontent.com/cdemon12/app/master/src/routes/main/data/cum_sum_counties.csv')
         csvData.forEach(d => {
             data.cum_sum_counties.set(d.geoid, filterKeys(d, keysToKeep));
         });
 
-        csvData = await csv('src/routes/main/data/nominal_mo.csv')
+        csvData = await csv('https://raw.githubusercontent.com/cdemon12/app/master/src/routes/main/data/nominal_mo.csv')
         csvData.forEach(d => {
             data.nominal_mo.push({
                 date: new Date(d.date),
@@ -47,7 +47,7 @@
             });
         });
 
-        csvData = await csv('src/routes/main/data/cum_sum_mo.csv')
+        csvData = await csv('https://raw.githubusercontent.com/cdemon12/app/master/src/routes/main/data/cum_sum_mo.csv')
         csvData.forEach(d => {
             data.cum_sum_mo.push({
                 date: new Date(d.date),
@@ -67,3 +67,12 @@
 {:catch error}
     <p>{error.message}</p>
 {/await}
+
+<style>
+    p {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: white;
+    }
+
+</style>
