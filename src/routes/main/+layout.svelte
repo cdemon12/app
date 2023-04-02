@@ -1,6 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
     import { writable } from 'svelte/store';
+    import { topHeight } from './stores';
 
     let min_width = writable(0);
     let scroll = 0;
@@ -8,11 +9,13 @@
     let width = 0;
     let max_width = "140vw";
     $: (width < 1000) ? max_width = "100%" : max_width = "140vw";
+    let height = 0;
+    $: topHeight.set(height);
+
 
     const title="Syphilis in Missouri: A look at the state's STD epidemic"
     const copy= "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore, adipisci. Similique, reiciendis, quisquam asperiores voluptas fuga, harum unde veritatis illum quasi nihil quidem enim totam eum. Inventore nihil sed exercitationem voluptates aperiam voluptatem voluptatibus veritatis quos maiores quis minima nostrum soluta, ab, animi itaque? Delectus voluptates corporis amet rem neque? Doloremque illo distinctio, mollitia fugit modi ea quibusdam excepturi qui animi officia veniam ut tempora atque quisquam suscipit. Sequi corporis praesentium quisquam ipsum error modi aperiam voluptatem sit commodi debitis qui, esse natus cumque placeat reiciendis ratione saepe provident dolores eligendi illum. Necessitatibus ex ratione consectetur unde, nostrum fugit sint!"
 </script>
-
 
 <svelte:head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +26,7 @@
 
 <svelte:window bind:scrollY={scroll} bind:innerWidth={width}/>
 
-<div class="container">
+<div class="container" bind:clientHeight={height}>
 <div class="nav">
     <div class="logos">
         <img src="https://bloximages.newyork1.vip.townnews.com/columbiamissourian.com/content/tncms/custom/image/31bfd10c-c90a-11ed-a410-df8816e5fbc8.png?resize=750%2C150" alt="Columbia Missourian" width="750" height="150" />
@@ -56,6 +59,12 @@
     <div class="date-byline"><div class="byline"><a href="https://www.columbiamissourian.com/users/profile/cschnell">BY COLE SCHNELL</a></div><div class="date">April 20, 2023</div></div>
 <article>
     <p>{copy}</p>
+</article>
+</div>
+<div class="slot">
+    <slot />
+</div>
+<article>
     <ul class="footer-btns">
         <li><a href="https://www.columbiamissourian.com/site/forms/online_services/show_error/show_me_the_errors/">Report an error</a></li>
         <li><a href="https://www.columbiamissourian.com/site/forms/online_services/letter_to_the_editor/letter_editor/">Write an letter</a></li>
@@ -71,7 +80,6 @@
         </div>
     </div>
 </article>
-</div>
 
 <footer>
     <div class="footer-content">
@@ -113,9 +121,10 @@
 
 <style lang="sass">
     $missourian-blue: #2f4879
-
-    container
-        position: absolute
+    
+    .slot
+        height: 300vh
+        margin: 0 0 30px 0
     .nav
         background-color: $missourian-blue
         height: 50px

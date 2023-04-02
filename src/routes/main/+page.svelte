@@ -2,17 +2,18 @@
     import Map from './Map.svelte';
     import Timeline from './Timeline.svelte';
     import { writable } from 'svelte/store';
-    import { step, type } from './stores';
+    import { step, type, topHeight } from './stores';
     import Buttons from './Buttons.svelte';
     import Bar from './Bar.svelte';
+
 
 
     let y: number;
     let height: number;
     let viewport_height: number;
     let number_of_steps: number = 96 -1;
-    $: steps =  number_of_steps * y / (height - viewport_height);
-    $: step.set(steps);
+    $: steps =  number_of_steps * (y - $topHeight) / (height - viewport_height);
+    $: if (steps < 95 && steps > 1) {step.set(steps)};
     let innerWidth: number;
     let width = writable(0);
     $: width.set(innerWidth);
@@ -26,6 +27,7 @@
         <li>height: {height}</li>
         <li>step: {Math.round($step)}</li>
         <li>type: {$type}</li>
+        <li>topHeight: {$topHeight}</li>
     </ul>
 </div> -->
 
@@ -67,7 +69,7 @@
 
     .sticky
         position: sticky
-        top: 0%
+        top: 0
         display: grid
         grid-template-columns: 1fr 1fr
         grid-template-rows: 80px 80vh
