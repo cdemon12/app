@@ -34,7 +34,7 @@
                 x1={0} 
                 y2={scale(tick)} 
                 x2={10} 
-                stroke="white" 
+                stroke="black" 
                 opacity={(getYear(tick) == getYear(new Date(dates[Math.round($step)]))) ? 1 : 0.2} 
                 stroke-width="60"
                 class={(getYear(tick) == getYear(new Date(dates[Math.round($step)]))) ? "selected": "none"} />
@@ -44,7 +44,7 @@
                 font-size={(getYear(tick) == getYear(new Date(dates[Math.round($step)]))) ? 25 : 20}
                 font-weight={(getYear(tick) == getYear(new Date(dates[Math.round($step)]))) ? "bold" : "500"}
                 opacity={(getYear(tick) == getYear(new Date(dates[Math.round($step)]))) ? 1 : 0.4}
-                fill="white"
+                fill="black"
                 class={(getYear(tick) == getYear(new Date(dates[Math.round($step)]))) ? "selected": "none"}>
                 {getYear(tick)}
             </text>
@@ -75,7 +75,7 @@
         height: 500px
     .selected
         opacity: 1
-        fill: white
+        fill: black
     text
-        fill: white
+        fill: black
 </style>

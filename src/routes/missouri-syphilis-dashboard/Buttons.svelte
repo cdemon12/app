@@ -12,9 +12,9 @@
 
 <style>
     button {
-        background-color: white;
+        background-color: black;
         opacity: 0.3;
-        color: black;
+        color: white;
         padding: 0.5em;
         font-size: 1.25em;
         cursor: pointer;

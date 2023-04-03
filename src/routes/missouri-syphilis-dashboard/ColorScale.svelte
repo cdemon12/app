@@ -23,7 +23,7 @@
 <style>
     text {
         font-weight: bold;
-        fill: white;
+        fill: black;
         opacity: 0.8;
     }
 

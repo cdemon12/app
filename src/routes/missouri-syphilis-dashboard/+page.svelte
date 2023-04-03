@@ -64,7 +64,7 @@
     .container
         height: 300vh
         position: absolute
-        background-color: #121212
+        background-color: white
         width: 100%
 
     .sticky

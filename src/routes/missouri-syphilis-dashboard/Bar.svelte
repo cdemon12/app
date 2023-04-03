@@ -90,7 +90,7 @@
 <style>
 
 	.tick line {
-        stroke: white;
+        stroke: black;
 		stroke-opacity: .25;
 	}
 
@@ -99,7 +99,7 @@
         font-size: 16px;
         font-family: Lato, sans-serif;
         font-weight: bold;
-		fill: white;
+		fill: black;
 	}
 
 	.x-axis .tick text {

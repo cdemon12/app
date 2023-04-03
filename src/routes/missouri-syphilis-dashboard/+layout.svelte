@@ -7,8 +7,8 @@
     let scroll = 0;
     $: min_width.set(140*(scroll/50));
     let width = 0;
-    let max_width = "140vw";
-    $: (width < 1000) ? max_width = "100%" : max_width = "140vw";
+    let max_width = "400vw";
+    $: (width < 1000) ? max_width = "100%" : max_width = "400vw";
     let height = 0;
     $: topHeight.set(height);
 
@@ -30,8 +30,8 @@
 <div class="nav">
     <div class="logos">
         <img src="https://bloximages.newyork1.vip.townnews.com/columbiamissourian.com/content/tncms/custom/image/31bfd10c-c90a-11ed-a410-df8816e5fbc8.png?resize=750%2C150" alt="Columbia Missourian" width="750" height="150" />
-        <div class="pipe">|</div>
-        <div class="section-head">Interactives</div>
+        <!-- <div class="pipe">|</div>
+        <div class="section-head">Interactives</div> -->
     </div>
     <div class="share" style="width: min({$min_width}vw, {max_width})">
         <h3>{title}</h3>
