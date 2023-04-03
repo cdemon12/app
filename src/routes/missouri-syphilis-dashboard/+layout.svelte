@@ -38,9 +38,9 @@
         <div>
             <ul>
                 <li class="share-text">SHARE THIS</li>
-                <li><a href="https://www.facebook.com"><ion-icon name="logo-facebook"></ion-icon></a></li>
-                <li><a href="https://www.twitter.com"><ion-icon name="logo-twitter"></ion-icon></a></li>
-                <li><a href="https://www.gmail.com"><ion-icon name="mail-sharp"></ion-icon></a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//columbiamissourian.vercel.app/missouri-syphilis-dashboard"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                <li><a href="https://twitter.com/intent/tweet?text=Syphilis%20in%20Missouri%3A%20A%20scroll%20through%20seven%20years%20of%20data%0Ahttps%3A//columbiamissourian.vercel.app/missouri-syphilis-dashboard%20via%20%40comissourian"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                <li><a href="mailto:?subject=Syphilis%20in%20Missouri%3A%20A%20scroll%20through%20seven%20years%20of%20data&body=Syphilis%20in%20Missouri%3A%20A%20scroll%20through%20seven%20years%20of%20data%0Ahttps%3A//columbiamissourian.vercel.app/missouri-syphilis-dashboard/%20via%20the%20Columbia%20Missourian"><ion-icon name="mail-sharp"></ion-icon></a></li>
                 <li><button on:click={()  => navigator.clipboard.writeText("www.columbiamissourian.com")}><ion-icon name="copy-sharp"></ion-icon></button></li>
                 <li><button on:click={()  => window.print()}><ion-icon name="print-sharp"></ion-icon></button></li>
             </ul>
