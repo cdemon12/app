@@ -5,14 +5,14 @@
 	import { fade } from 'svelte/transition';
     import { writable } from 'svelte/store';
 	import { scaleTime } from 'd3-scale';
-    import Timeline from './Timeline.svelte';
-	import Promise from './Promise.svelte';
     import ColorScale from './ColorScale.svelte';
 	import { scaleThreshold } from 'd3-scale';
 	import { schemeBlues } from 'd3-scale-chromatic';
-    import { tweened } from 'svelte/motion';
 	import dates from './dates.js';
 	import { step, type } from './stores';
+	import { getMonthYear } from './helper';
+
+	export let data: any;
 
 	const colorScale = scaleThreshold()
         .domain([0, 1, 2, 4, 16])
@@ -46,24 +46,41 @@
 			return data.cum_sum_counties.get(county.id)[date];
 		}; 
 	};
+
+	let hovered: object | null = null;
+    let m = { x: 0, y: 0 };
+
+    function handleMousemove(event) {
+        m.x = event.clientX;
+        m.y = event.clientY;
+    }
 </script>
 
-<Promise let:data={data}>
+<div on:mousemove={handleMousemove}>
 	<svg viewBox="495 273 118 120">
 		<g transform ="rotate(2, 150, 75)">
 			{#each counties as d, i}
 				<path d={path(d)} 
-				class="state" 
+				class="county" 
 				stroke="#121212" 
 				stroke-width="0.1" 
 				fill="{String(colorScale(selectData(data, d, dates[Math.round($step)], $type)))}"
-				in:fade="{{ delay: i*10, duration: 500 }}" />
+				in:fade="{{ delay: i*10, duration: 500 }}" 
+				on:mouseover={() => hovered = d}
+				on:mouseout={() => hovered = null}/>
 			{/each}
 		</g>
-		<ColorScale color={"blue"} max={16} />
+		<ColorScale max={16} />
 	</svg>
-</Promise>
-
+	{#if hovered}
+	<div class="tooltip" style="top: {m.y + 20}px; left: {m.x - 100}px;">
+		<h3>{(hovered.id == 29510) ? "St. Louis city" : hovered.properties.name + " county"}</h3>
+		<p>{Math.round(data.per_capita_counties.get(hovered.id)[dates[Math.round($step)]], 2)} cases per 100,000</p>
+		<p>{Math.round(data.nominal_counties.get(hovered.id)[dates[Math.round($step)]])} cases in total</p>
+		<p>{Math.round(data.cum_sum_per_capita_counties.get(hovered.id)[dates[Math.round($step)]])} cases since January 2015</p>
+	</div>
+	{/if}
+</div>
 <style>
 	svg {
 		display: block;
@@ -71,6 +88,35 @@
 		max-width: 100%;
 		height: 80vh;
 	}
+	.tooltip {
+		position: fixed;
+		width: 200px;
+		padding: 5px;
+		background: white;
+		border: 1px solid black;
+		z-index: 100;
+	}
+
+	.tooltip p {
+		margin: 0;
+		padding: 0;
+	}
+
+
+	.county:hover {
+		fill: #000;
+	}
+
+	h3 {
+		margin: 0;
+		padding: 0;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+
 	@media screen and (max-width: 768px)
 	{
 		svg {

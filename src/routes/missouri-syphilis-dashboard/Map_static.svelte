@@ -12,6 +12,8 @@
 	import dates from './dates.js';
 	import { step, type } from './stores';
 
+	export let data: any;
+
 	const colorScale = scaleThreshold()
         .domain([0, 50, 100, 150, 200])
         .range(schemeGreens[5]);
@@ -39,13 +41,10 @@
         m.y = event.clientY;
     }
 
-	$: console.log(hovered)
-
 </script>
 
 <h1>Cases per 100,000 since 2015</h1>
 <div on:mousemove={handleMousemove}>
-<Promise let:data={data}>
 	<svg viewBox="495 273 118 120">
 		<g transform ="rotate(2, 150, 75)">
 			{#each counties as d, i}
@@ -68,7 +67,6 @@
 		<p>{(hovered.id == 29510) ? "St. Louis city" : hovered.properties.name + " county"} reported <b>{Math.round(data.cum_sum_counties.get(hovered.id)[dates[95]])} Syphilis cases per 100,000</b> and <b>{Math.round(data.cum_sum_per_capita_counties.get(hovered.id)[dates[95]])} in total</b> since 2015.</p>
 	</div>
 	{/if}
-</Promise>
 </div>
 
 

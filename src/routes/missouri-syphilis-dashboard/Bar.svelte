@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { scaleLinear, scaleTime } from 'd3-scale';
 	import { tweened } from 'svelte/motion';
 	import Promise from './Promise.svelte';
@@ -7,6 +7,8 @@
 	import { getMonthYear } from './helper';
 	import { schemeBlues } from 'd3-scale-chromatic';
 	import { scaleThreshold } from 'd3-scale';
+
+	export let data:any;
 
 
     const xTicks = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022];
@@ -51,8 +53,6 @@
 	// $: innerWidth = width - (padding.left + padding.right);
 	$: barWidth = chartWidth / 96;
 </script>
-
-<Promise let:data={data}>
 		<!-- y axis -->
 		<g class="axis y-axis">
 			{#each yTicks as tick}
@@ -84,8 +84,6 @@
 				></rect>
 			{/each}
 		</g>
-</Promise>
-
 
 <style>
 

@@ -10,6 +10,8 @@
     import { schemeBlues } from "d3-scale-chromatic";
     import { scaleThreshold } from "d3-scale";
 
+    export let data: any;
+
     const colorScale = scaleThreshold()
         .domain([0, 1, 2, 4, 16])
         .range(schemeBlues[5]);
@@ -70,7 +72,7 @@
         </text>
     </g>
     <g>
-        <Bar />
+        <Bar {data} />
     </g>
 </svg>
 

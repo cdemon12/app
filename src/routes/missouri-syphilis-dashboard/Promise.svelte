@@ -61,7 +61,7 @@
                 value: +d.value
             });
         });
-        console.log(data.nominal_counties)
+        
         return data;
     }
 

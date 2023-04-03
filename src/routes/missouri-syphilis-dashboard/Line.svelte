@@ -7,6 +7,8 @@
     import { schemeGreens } from 'd3-scale-chromatic';
     import { scaleThreshold } from 'd3-scale';
 
+    export let data;
+
     const colorScale = scaleThreshold()
         .domain([0, 50, 100, 150, 200])
         .range(schemeGreens[5]);
@@ -38,7 +40,6 @@
 
 <h2>Cummulative cases since 2015</h2>
 
-<Promise let:data={data}>
 <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
     <svg>
         <path d={lineGenerator(data.cum_sum_mo)} fill="none" stroke="{colorScale(200)}" stroke-width="2" in:draw={{ delay: 10, duration: 1000 }}/>
@@ -66,7 +67,6 @@
 	</g>
     </svg>
 </div>
-</Promise>
 
 <style>
 

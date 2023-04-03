@@ -7,15 +7,15 @@
     import Bar from './Bar.svelte';
     import MapStatic from './Map_static.svelte';
     import Line from './Line.svelte';
-
+    import Promise from './Promise.svelte';
 
 
     let y: number;
     let height: number;
     let viewport_height: number;
-    let number_of_steps: number = 96 -1;
+    let number_of_steps: number = 96 - 1;
     $: steps =  number_of_steps * (y - $topHeight) / (height - viewport_height);
-    $: if (steps < 95 && steps > 1) {step.set(steps)};
+    $: if (steps < 95 && steps > 0) {step.set(steps)};
     let innerWidth: number;
     let width = writable(0);
     $: width.set(innerWidth);
@@ -36,28 +36,30 @@
     </ul>
 </div> -->
 
-<div class="container" bind:clientHeight={height} style="--mobile-width: {$width}px">
-    <div class="sticky">
-    <div class="btn">
-        <Buttons />
+<Promise let:data={data}>
+    <div class="container" bind:clientHeight={height} style="--mobile-width: {$width}px">
+        <div class="sticky">
+        <div class="btn">
+            <Buttons />
+        </div>
+        <div class="map">
+            <Map {$step} {data}/>
+        </div>
+        <div class="timeline">
+            <Timeline {$step} {data}/>
+        </div>
+        </div>
     </div>
-    <div class="map">
-        <Map {$step} />
+    <div class="spacer"></div>
+    <div class="map-static">
+        <div>
+            <MapStatic {data} />
+        </div>
+        <div class="line">
+            <Line {data} />
+        </div>
     </div>
-    <div class="timeline">
-        <Timeline {$step} />
-    </div>
-    </div>
-</div>
-<div class="spacer"></div>
-<div class="map-static">
-    <div>
-        <MapStatic />
-    </div>
-    <div class="line">
-        <Line />
-    </div>
-</div>
+</Promise>
 
 <div class="bottom">
     <p>Source: Missouri Department of Health, U.S. Census Bureau</p>
