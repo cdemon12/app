@@ -5,8 +5,14 @@
     import { tweened } from "svelte/motion";
     import dates from "./dates.js";
     import { step } from "./stores";
-    import { getMonth, colorScale } from "./helper";
+    import { getMonth } from "./helper";
     import Bar from "./Bar.svelte";
+    import { schemeBlues } from "d3-scale-chromatic";
+    import { scaleThreshold } from "d3-scale";
+
+    const colorScale = scaleThreshold()
+        .domain([0, 1, 2, 4, 16])
+        .range(schemeBlues[5]);
 
     export let date = writable("2015-01-01");
     console.log(date)

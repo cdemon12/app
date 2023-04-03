@@ -1,24 +1,24 @@
 <script lang="ts">
 import { scaleThreshold } from "d3-scale";
-import { schemeBlues } from "d3-scale-chromatic";
+import { schemeGreens } from "d3-scale-chromatic";
 
 
 export let max: number;
 
 const colorScale = scaleThreshold()
-    .domain([0, 1, 2, 4, 16])
-    .range(schemeBlues[5]);
+        .domain([0, 50, 100, 150, 200])
+        .range(schemeGreens[5]);
 
 </script>
 
 <defs>
-    <linearGradient id="Gradient" x1="0" x2="0" y1="0" y2="1">
+    <linearGradient id="Gradient2" x1="0" x2="0" y1="0" y2="1">
     <stop offset="0%" stop-color="{colorScale(0)}"/>
-    <stop offset="100%" stop-color="{colorScale(16)}"/>
+    <stop offset="100%" stop-color="{colorScale(200)}"/>
     </linearGradient>
 </defs>
 <g>
-    <rect x="{495 + 118 - 30}" y="{273 + 3}" width="4" height="20" fill ="url(#Gradient)" />
+    <rect x="{495 + 118 - 30}" y="{273 + 3}" width="4" height="20" fill ="url(#Gradient2)" />
     <text x="{495 + 118 - 30 + 5}" y="{273 + 3 + 1}" font-size="3">0</text>
     <text x="{495 + 118 - 30 + 5}" y="{273 + 3 + 21}" font-size="3">{max} cases</text>
     <!--<text x="{495 + 118 - 30 + 5}" y="{273 + 3 + 23}" font-size="2">per 100,000</text>-->

@@ -13,8 +13,8 @@
     $: topHeight.set(height);
 
 
-    const title="Syphilis in Missouri: A look at the state's STD epidemic"
-    const copy= "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore, adipisci. Similique, reiciendis, quisquam asperiores voluptas fuga, harum unde veritatis illum quasi nihil quidem enim totam eum. Inventore nihil sed exercitationem voluptates aperiam voluptatem voluptatibus veritatis quos maiores quis minima nostrum soluta, ab, animi itaque? Delectus voluptates corporis amet rem neque? Doloremque illo distinctio, mollitia fugit modi ea quibusdam excepturi qui animi officia veniam ut tempora atque quisquam suscipit. Sequi corporis praesentium quisquam ipsum error modi aperiam voluptatem sit commodi debitis qui, esse natus cumque placeat reiciendis ratione saepe provident dolores eligendi illum. Necessitatibus ex ratione consectetur unde, nostrum fugit sint!"
+    const title="Syphilis in Missouri: A look at the data"
+    const copy= ""
 </script>
 
 <svelte:head>
@@ -38,7 +38,7 @@
         <div>
             <ul>
                 <li class="share-text">SHARE THIS</li>
-                <li><a href="https://www.facebook.com"><ion-icon name="logo-rfacebook"></ion-icon></a></li>
+                <li><a href="https://www.facebook.com"><ion-icon name="logo-facebook"></ion-icon></a></li>
                 <li><a href="https://www.twitter.com"><ion-icon name="logo-twitter"></ion-icon></a></li>
                 <li><a href="https://www.gmail.com"><ion-icon name="mail-sharp"></ion-icon></a></li>
                 <li><button on:click={()  => navigator.clipboard.writeText("www.columbiamissourian.com")}><ion-icon name="copy-sharp"></ion-icon></button></li>
@@ -123,7 +123,7 @@
     $missourian-blue: #2f4879
     
     .slot
-        height: 300vh
+        height: 400vh
         margin: 0 0 30px 0
     .nav
         background-color: $missourian-blue

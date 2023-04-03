@@ -33,8 +33,6 @@ date.setDate(32);
   return date.toLocaleDateString('en-US', options);
 }
 
-const colorScale = scaleThreshold()
-  .domain([0, 1, 2, 4, 16])
-  .range(schemeBlues[5]);
 
-export { filterKeys, getMonthYear, getYear, getMonth, colorScale };
+
+export { filterKeys, getMonthYear, getYear, getMonth };

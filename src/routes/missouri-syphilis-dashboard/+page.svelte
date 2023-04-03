@@ -5,6 +5,8 @@
     import { step, type, topHeight } from './stores';
     import Buttons from './Buttons.svelte';
     import Bar from './Bar.svelte';
+    import MapStatic from './Map_static.svelte';
+    import Line from './Line.svelte';
 
 
 
@@ -18,6 +20,9 @@
     let width = writable(0);
     $: width.set(innerWidth);
 </script>
+<svelte:head>
+    <title>Missouri Syphilis Dashboard</title>
+</svelte:head>
 
 <svelte:window bind:scrollY={y} bind:innerHeight={viewport_height} bind:innerWidth={innerWidth}/>
 
@@ -43,10 +48,20 @@
         <Timeline {$step} />
     </div>
     </div>
-    <div class="bottom">
-        <p>Source: Missouri Department of Health, U.S. Census Bureau</p>
-        <p class="byline"><b>COLE SCHNELL</b> / Columbia Missourian</p>
+</div>
+<div class="spacer"></div>
+<div class="map-static">
+    <div>
+        <MapStatic />
     </div>
+    <div class="line">
+        <Line />
+    </div>
+</div>
+
+<div class="bottom">
+    <p>Source: Missouri Department of Health, U.S. Census Bureau</p>
+    <p class="byline"><b>COLE SCHNELL</b> / Columbia Missourian</p>
 </div>
 
 <style lang="sass">
@@ -64,8 +79,17 @@
     .container
         height: 300vh
         position: absolute
-        background-color: white
         width: 100%
+
+    .spacer
+        height: 300vh
+
+    .map-static
+        position: relative
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: space-around
 
     .sticky
         position: sticky
@@ -90,20 +114,20 @@
         height: 80vh
     
     .bottom
-        position: absolute
+        position: relative
         bottom: 0
         display: flex
         justify-content: space-between
         width: calc(100% - 20px)
         padding: 10px
         font-size: 1em
-        color: white
+        color: black
         
         p
             margin: 0
             padding: 0
             font-size: 1rem
-            color: white
+            color: black
 
         .byline
             text-align: right
@@ -129,4 +153,6 @@
             -o-transform: rotate(270deg)
             -ms-transform: rotate(270deg)
             transform: rotate(270deg)
+        .map-static
+            flex-direction: column
 </style>

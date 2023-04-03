@@ -4,6 +4,12 @@
     import { draw } from 'svelte/transition';
     import { getYear } from './helper';
     import Promise from './Promise.svelte';
+    import { schemeGreens } from 'd3-scale-chromatic';
+    import { scaleThreshold } from 'd3-scale';
+
+    const colorScale = scaleThreshold()
+        .domain([0, 50, 100, 150, 200])
+        .range(schemeGreens[5]);
 
     // create graph dimensions
     let height = 500;
@@ -35,7 +41,7 @@
 <Promise let:data={data}>
 <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
     <svg>
-        <path d={lineGenerator(data.cum_sum_mo)} fill="none" stroke="DodgerBlue" stroke-width="2" in:draw={{ delay: 10, duration: 1000 }}/>
+        <path d={lineGenerator(data.cum_sum_mo)} fill="none" stroke="{colorScale(200)}" stroke-width="2" in:draw={{ delay: 10, duration: 1000 }}/>
     <!-- y axis -->
 	<g>
 		{#each yTicks as y} 

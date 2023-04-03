@@ -60,7 +60,7 @@
 				in:fade="{{ delay: i*10, duration: 500 }}" />
 			{/each}
 		</g>
-		<ColorScale {colorScale} />
+		<ColorScale color={"blue"} max={16} />
 	</svg>
 </Promise>
 
