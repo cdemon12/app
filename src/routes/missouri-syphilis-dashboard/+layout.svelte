@@ -13,7 +13,7 @@
     $: topHeight.set(height);
 
 
-    const title="Syphilis in Missouri: A look at the data"
+    const title="Syphilis in Missouri: A scroll through seven years of data"
     const copy= ""
 </script>
 
