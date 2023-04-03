@@ -29,7 +29,7 @@
 <div class="container" bind:clientHeight={height}>
 <div class="nav">
     <div class="logos">
-        <img src="https://bloximages.newyork1.vip.townnews.com/columbiamissourian.com/content/tncms/custom/image/31bfd10c-c90a-11ed-a410-df8816e5fbc8.png?resize=750%2C150" alt="Columbia Missourian" width="750" height="150" />
+        <a href="https://www.columbiamissourian.com/"><img src="https://bloximages.newyork1.vip.townnews.com/columbiamissourian.com/content/tncms/custom/image/31bfd10c-c90a-11ed-a410-df8816e5fbc8.png?resize=750%2C150" alt="Columbia Missourian" width="750" height="150" /></a>
         <!-- <div class="pipe">|</div>
         <div class="section-head">Interactives</div> -->
     </div>
