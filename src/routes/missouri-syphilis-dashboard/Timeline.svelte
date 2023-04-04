@@ -17,7 +17,6 @@
         .range(schemeBlues[5]);
 
     export let date = writable("2015-01-01");
-    console.log(date)
 
     const scale = scaleTime()
         .domain([new Date("2015-01-01"), new Date("2022-12-01")])

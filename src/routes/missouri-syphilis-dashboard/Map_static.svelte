@@ -3,14 +3,12 @@
 	import * as topojson from 'topojson-client';
 	import { geoPath, geoAlbersUsa } from 'd3-geo';
 	import { fade } from 'svelte/transition';
-    import { writable } from 'svelte/store';
 	import { scaleTime } from 'd3-scale';
-	import Promise from './Promise.svelte';
     import ColorScaleStatic from './ColorScale_static.svelte';
 	import { scaleThreshold } from 'd3-scale';
 	import { schemeGreens } from 'd3-scale-chromatic';
 	import dates from './dates.js';
-	import { step, type } from './stores';
+	import { selected } from './stores'
 
 	export let data: any;
 
@@ -31,6 +29,7 @@
 		const us = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3/counties-albers-10m.json')
 		.then(d => d.json())
 		counties = topojson.feature(us, us.objects.counties).features.filter(d => d.id.slice(0, 2) === '29');
+		console.log(counties);	
 	})
 
     let hovered: object | null = null;
@@ -40,6 +39,9 @@
         m.x = event.clientX;
         m.y = event.clientY;
     }
+
+
+	$: (hovered) ? selected.set({id: hovered.id, name: hovered.properties.name}) : selected.set({id:"29019", name:"Boone"});
 
 </script>
 
@@ -64,7 +66,7 @@
 	{#if hovered}
 	<div class="tooltip" style="top: {m.y + 20}px; left: {m.x - 100}px;">
 		<h3>{(hovered.id == 29510) ? "St. Louis city" : hovered.properties.name + " county"}</h3>
-		<p>{(hovered.id == 29510) ? "St. Louis city" : hovered.properties.name + " county"} reported <b>{Math.round(data.cum_sum_counties.get(hovered.id)[dates[95]])} Syphilis cases per 100,000</b> and <b>{Math.round(data.cum_sum_per_capita_counties.get(hovered.id)[dates[95]])} in total</b> since 2015.</p>
+		<p>{(hovered.id == 29510) ? "St. Louis city" : hovered.properties.name + " county"} reported <b>{(Math.round(data.cum_sum_counties.get(hovered.id)[dates[95]])).toLocaleString()} Syphilis cases per 100,000</b> and <b>{Math.round(data.cum_sum_per_capita_counties.get(hovered.id)[dates[95]]).toLocaleString()} in total</b> since 2015.</p>
 	</div>
 	{/if}
 </div>

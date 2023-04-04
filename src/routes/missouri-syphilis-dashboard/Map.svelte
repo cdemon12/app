@@ -75,9 +75,9 @@
 	{#if hovered}
 	<div class="tooltip" style="top: {m.y + 20}px; left: {m.x - 100}px;">
 		<h3>{(hovered.id == 29510) ? "St. Louis city" : hovered.properties.name + " county"}</h3>
-		<p>{Math.round(data.per_capita_counties.get(hovered.id)[dates[Math.round($step)]], 2)} cases per 100,000</p>
-		<p>{Math.round(data.nominal_counties.get(hovered.id)[dates[Math.round($step)]])} cases in total</p>
-		<p>{Math.round(data.cum_sum_per_capita_counties.get(hovered.id)[dates[Math.round($step)]])} cases since January 2015</p>
+		<p>{Math.round(data.per_capita_counties.get(hovered.id)[dates[Math.round($step)]], 2).toLocaleString()} cases per 100,000</p>
+		<p>{Math.round(data.nominal_counties.get(hovered.id)[dates[Math.round($step)]]).toLocaleString()} cases in total</p>
+		<p>{Math.round(data.cum_sum_per_capita_counties.get(hovered.id)[dates[Math.round($step)]]).toLocaleString()} cases since January 2015</p>
 	</div>
 	{/if}
 	<p style="transform: translateY(-20px)">Hover to see more details.</p>

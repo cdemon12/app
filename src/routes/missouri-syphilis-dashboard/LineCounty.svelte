@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { scaleLinear, scaleTime } from 'd3-scale';
     import { line, curveBasis } from 'd3-shape';
     import { draw } from 'svelte/transition';
@@ -6,10 +6,21 @@
     import Promise from './Promise.svelte';
     import { schemeGreens } from 'd3-scale-chromatic';
     import { scaleThreshold } from 'd3-scale';
+    import { extent } from 'd3';
+    import dates from "./dates";
+    import { selected } from './stores';
+    import { min, max } from 'd3';
 
-    export let data;
+    export let data: any;
+    let d:{ date: Date | string | undefined; value: number | undefined}[] = []
 
-    console.log(data.cum_sum_mo)
+    $:{for (let x in dates) {
+            if (x == 0) {d = []};
+            d.push({
+                date: new Date(dates[x]),
+                value: data.get($selected.id)[dates[x]]
+            })
+        }}
 
     const colorScale = scaleThreshold()
         .domain([0, 50, 100, 150, 200])
@@ -20,13 +31,14 @@
     let width = 200;
 	const padding = { top: 20, right: 15, bottom: 25, left: 25 };
 
+
     // create scales
     $: xScale = scaleTime()
              .domain([new Date('2015-01-01'), new Date('2022-12-01')])
             .range([padding.left, width - padding.right]);
     
     $: yScale = scaleLinear()
-            .domain([0, 17000])
+            .domain([min(Object.values(data.get($selected.id))), max(Object.values(data.get($selected.id)))+1])
             .range([height - padding.bottom, padding.top]);
 
     // create line generator
@@ -39,13 +51,14 @@
     $: xTicks = xScale.ticks(3);
     $: yTicks = yScale.ticks(5);
 
+
 </script> 
 
-<h2>Missouri cummulative cases</h2>
+<h2>{($selected.id == 29510) ? "St. Louis city" : $selected.name + " county"} cummulative cases</h2>
 
 <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
     <svg>
-        <path d={lineGenerator(data.cum_sum_mo)} fill="none" stroke="{colorScale(200)}" stroke-width="2" in:draw={{ delay: 10, duration: 1000 }}/>
+        <path d={lineGenerator(d)} fill="none" stroke="{colorScale(200)}" stroke-width="2" in:draw={{ delay: 10, duration: 1000 }}/>
     <!-- y axis -->
 	<g>
 		{#each yTicks as y} 

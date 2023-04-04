@@ -8,6 +8,7 @@
     import MapStatic from './Map_static.svelte';
     import Line from './Line.svelte';
     import Promise from './Promise.svelte';
+    import LineCounty from './LineCounty.svelte';
 
 
     let y: number;
@@ -57,6 +58,7 @@
         </div>
         <div class="line">
             <Line {data} />
+            <LineCounty data={data.cum_sum_counties} />
         </div>
     </div>
 </Promise>
@@ -113,6 +115,14 @@
         align-items: center
         justify-content: center
     .map
+        height: 80vh
+
+    .line
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        width: 400px
         height: 80vh
     
     .bottom
