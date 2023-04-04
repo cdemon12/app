@@ -25,4 +25,10 @@
     .selected {
         opacity: 0.7;
         }
+    @media screen and (max-width: 768px){
+        button {
+            font-size: 1em;
+        }
+    }
+
 </style>

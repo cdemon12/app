@@ -85,4 +85,11 @@
         fill: black
     text
         fill: black
+
+    @media screen and (max-width: 768px)
+    svg
+        padding: 0
+        width: 400px
+        height: 100vw
+
 </style>

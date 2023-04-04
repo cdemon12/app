@@ -38,6 +38,7 @@
 </div> -->
 
 <Promise let:data={data}>
+<div class="outer">
     <div class="container" bind:clientHeight={height} style="--mobile-width: {$width}px">
         <div class="sticky">
         <div class="btn">
@@ -61,16 +62,19 @@
             <LineCounty data={data.cum_sum_counties} />
         </div>
     </div>
+    <div class="bottom">
+        <p>Source: Missouri Department of Health, U.S. Census Bureau</p>
+        <p class="byline"><b>COLE SCHNELL</b> / Columbia Missourian</p>
+    </div>
+</div>
 </Promise>
 
-<div class="bottom">
-    <p>Source: Missouri Department of Health, U.S. Census Bureau</p>
-    <p class="byline"><b>COLE SCHNELL</b> / Columbia Missourian</p>
-</div>
+
+
 
 <style lang="sass">
     * 
-        font-family: 'Lato', sans-serif
+        font-family: 'Lato', sans-serif 
     .debug
         position: fixed
         top: 0
@@ -146,9 +150,9 @@
 
     @media screen and (max-width: 768px)
         .container
-            width: var(--mobile-width)
+            width: 100%
         .sticky
-            grid-template-columns: 1fr
+            grid-template-columns: 100vw
             grid-template-rows: 80px 60vh 40vh
             grid-gap: 0px
         .map
@@ -167,4 +171,11 @@
             transform: rotate(270deg)
         .map-static
             flex-direction: column
+            height: 90vh
+        .line
+            width: 80vw
+            height: 150px
+            transform: translateY(30px)
+        .bottom
+            bottom: -130px
 </style>

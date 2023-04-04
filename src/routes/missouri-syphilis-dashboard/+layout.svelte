@@ -392,5 +392,12 @@
         .nav
             flex-direction: column
             height: 100px
+        footer
+            .footer-content
+                flex-direction: column
+        .slot
+            height: 410vh
+        .footer-btns
+            font-size: 10px
 
 </style>
