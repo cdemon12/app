@@ -155,6 +155,7 @@
             grid-template-columns: 95vw
             grid-template-rows: 80px 60vh 40vh
             grid-gap: 0px
+            margin-left: 2vw
         .map
             grid-column: 1 / span 1
             grid-row: 2 / 2
