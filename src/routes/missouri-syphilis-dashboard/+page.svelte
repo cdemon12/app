@@ -17,6 +17,8 @@
     let number_of_steps: number = 96 - 1;
     $: steps =  number_of_steps * (y - $topHeight) / (height - viewport_height);
     $: if (steps < 95 && steps > 0) {step.set(steps)};
+    $: if (steps > 95) {step.set(95)};
+    $: if (steps < 0) {step.set(0)};
     let innerWidth: number;
     let width = writable(0);
     $: width.set(innerWidth);
