@@ -80,7 +80,7 @@
 		<p>{Math.round(data.cum_sum_per_capita_counties.get(hovered.id)[dates[Math.round($step)]]).toLocaleString()} cases since January 2015</p>
 	</div>
 	{/if}
-	<p style="transform: translateY(-20px)">Hover to see more details.</p>
+	<p class="note" style="transform: translateY(-20px)">Hover to see more details.</p>
 </div>
 <style>
 	svg {
@@ -122,6 +122,10 @@
 	{
 		svg {
 			height: 50vh;
+		}
+		.note {
+			display: none;
+			visibility: hidden; 
 		}
 	}
 </style>

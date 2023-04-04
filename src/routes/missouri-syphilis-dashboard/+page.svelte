@@ -168,7 +168,7 @@
             -moz-transform: rotate(270deg)
             -o-transform: rotate(270deg)
             -ms-transform: rotate(270deg)
-            transform: rotate(270deg)
+            transform: rotate(270deg) translateX(100px)
         .map-static
             flex-direction: column
             height: 90vh
