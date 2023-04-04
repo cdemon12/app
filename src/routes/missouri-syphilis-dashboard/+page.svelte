@@ -153,7 +153,7 @@
             width: 100%
         .sticky
             grid-template-columns: 95vw
-            grid-template-rows: 80px 60vh 40vh
+            grid-template-rows: 80px 50vh 40vh
             grid-gap: 0px
             margin-left: 2vw
         .map
