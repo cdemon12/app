@@ -66,7 +66,7 @@
 	{#if hovered}
 	<div class="tooltip" style="top: {m.y + 20}px; left: {m.x - 100}px;">
 		<h3>{(hovered.id == 29510) ? "St. Louis city" : hovered.properties.name + " county"}</h3>
-		<p>{(hovered.id == 29510) ? "St. Louis city" : hovered.properties.name + " county"} reported <b>{(Math.round(data.cum_sum_counties.get(hovered.id)[dates[95]])).toLocaleString()} Syphilis cases per 100,000</b> and <b>{Math.round(data.cum_sum_per_capita_counties.get(hovered.id)[dates[95]]).toLocaleString()} in total</b> since 2015.</p>
+		<p>{(hovered.id == 29510) ? "St. Louis city" : hovered.properties.name + " county"} reported <b>{(Math.round(data.cum_sum_per_capita_counties.get(hovered.id)[dates[95]])).toLocaleString()} Syphilis cases per 100,000</b> and <b>{Math.round(data.cum_sum_counties.get(hovered.id)[dates[95]]).toLocaleString()} in total</b> since 2015.</p>
 	</div>
 	{/if}
 </div>
